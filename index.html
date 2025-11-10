@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday, Joy 💖</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(to bottom right, #ffe6eb, #fff8dc);
+        color: #4b2c39;
+        overflow-x: hidden;
+        position: relative;
+        scroll-behavior: smooth;
+      }
+
+      h1 {
+        font-family: "Great Vibes", cursive;
+        color: #e63946;
+        letter-spacing: 1px;
+      }
+      h2 {
+        font-family: "Great Vibes", cursive;
+        color: #e63946;
+        letter-spacing: 1px;
+        font-size: 3rem;
+      }
+
+      section {
+        padding: 90px 20px;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1.2s ease, transform 1.2s ease;
+      }
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(circle at center, #ffd6e0, #fff4cc);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero h1 {
+        font-size: 3.5em;
+        animation: fadeInUp 2s ease;
+      }
+      .hero p {
+        font-size: 1.3em;
+        color: #6d4b57;
+        max-width: 500px;
+        animation: fadeIn 3s ease;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Floating hearts and roses */
+      .float {
+        position: fixed;
+        bottom: -10vh;
+        font-size: 24px;
+        opacity: 0.8;
+        animation: floatUp 10s linear infinite;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) scale(1);
+          opacity: 0.9;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-120vh) scale(1.3);
+          opacity: 0;
+        }
+      }
+
+      .message {
+        max-width: 750px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        margin-bottom: 5rem;
+      }
+      .message p {
+        font-size: 1.15em;
+        line-height: 1.9em;
+        margin-bottom: 15px;
+      }
+
+      .gallery {
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 20px;
+        max-width: 900px;
+        margin: auto;
+        padding: 50px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+      }
+      .videos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+      }
+      video {
+        width: 280px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+      video:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .reasons ul {
+        list-style: none;
+        padding: 0;
+        max-width: 500px;
+        margin: auto;
+      }
+      .reasons li {
+        background: linear-gradient(135deg, #fff4cc, #ffd6e0);
+        margin: 15px 0;
+        padding: 18px;
+        border-radius: 12px;
+        font-size: 1.15em;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .reasons li:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .ending {
+        background: #ffe6eb;
+        padding: 100px 20px;
+      }
+      .ending p {
+        font-size: 1.3em;
+        max-width: 650px;
+        margin: auto;
+        color: #4b2c39;
+      }
+
+      /* Music button */
+      #music-toggle {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: #e63946;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        font-size: 1.3em;
+        cursor: pointer;
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+        transition: transform 0.3s ease;
+        z-index: 999;
+      }
+      #music-toggle:hover {
+        transform: scale(1.1);
+      }
+
+      /* Mobile responsiveness for iPhone 14 Pro Max and similar devices */
+      @media (max-width: 768px) {
+        section {
+          padding: 60px 15px; /* Reduced padding for smaller screens */
+        }
+
+        .hero {
+          height: 90vh; /* Adjust for mobile notches/bars */
+        }
+
+        .hero h1 {
+          font-size: 2.5em; /* Smaller heading to fit screen */
+        }
+        .hero p {
+          font-size: 1.1em; /* Slightly smaller subtext */
+          max-width: 90%; /* Allow more width on narrow screens */
+        }
+
+        .message {
+          padding: 30px 20px; /* Tighter padding */
+          margin-bottom: 3rem;
+        }
+        .message p {
+          font-size: 1em; /* Readable on mobile */
+          line-height: 1.7em;
+        }
+
+        .gallery {
+          padding: 30px 20px; /* Reduced padding */
+          margin-top: 3rem;
+        }
+        .videos {
+          gap: 15px; /* Closer spacing */
+        }
+        video {
+          width: 100%; /* Full width for stacking */
+          max-width: 280px; /* Cap at original size */
+        }
+
+        .reasons li {
+          font-size: 1em; /* Smaller text for list items */
+          padding: 15px; /* Less padding */
+        }
+
+        .ending {
+          padding: 60px 15px; /* Reduced padding */
+        }
+        .ending p {
+          font-size: 1.1em; /* Balanced size */
+          max-width: 90%; /* More flexible width */
+        }
+
+        .float {
+          font-size: 18px; /* Slightly smaller floating icons */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="hero">
+      <h1>Happy Birthday, Joy 💖</h1>
+      <p>Sister Joy, you bring light, laughter, and love to everyone’s life.</p>
+    </section>
+
+    <section class="message">
+      <p>
+        Sister Joy, you’ve always been my biggest blessing — honestly sisi I
+        don’t know how my life would have been without you in it. I can’t even
+        find the right words to express how much you mean to me, I wish you the
+        very best in this life and I pray that God grants you everything you
+        have ever wanted in this life because you 100% deserve it sisi.
+      </p>
+      <p>
+        You’ve carried strength and grace in every season, and I’m endlessly
+        grateful for the heart you share with everyone around you.
+      </p>
+      <p>
+        Thank you for being my sister, my guide, my second mom. I love you with
+        all my heart sisi. 🌸
+      </p>
+    </section>
+
+    <section class="gallery">
+      <h2>Our Little Memories 💕</h2>
+      <div class="videos">
+        <video controls>
+          <source
+            src="WhatsApp Video 2025-10-28 at 10.46.09 PM.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <video controls>
+          <source
+            src="WhatsApp Video 2025-10-28 at 10.46.15 PM.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <video controls>
+          <source
+            src="WhatsApp Video 2025-10-28 at 10.49.39 PM.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+    </section>
+
+    <section class="reasons">
+      <h2>Why I Love You 🌹</h2>
+      <ul>
+        <li>Your very kind and hardworking 💛</li>
+        <li>You never stop believing in me ✨</li>
+        <li>You bring Joy wherever you go 🌼</li>
+        <li>You are my forever role model ❤️</li>
+      </ul>
+    </section>
+
+    <section class="ending">
+      <p>
+        “If I could show you how I see you, you’d finally understand why you
+        mean so much to me.”
+      </p>
+      <p><strong>Happy Birthday sisi — I love you so much. 💗</strong></p>
+    </section>
+
+    <audio id="bg-music" loop>
+      <source
+        src="inspirational-uplifting-calm-piano-254764.mp3"
+        type="audio/mp3"
+      />
+    </audio>
+    <button id="music-toggle">🎵</button>
+
+    <script>
+      const sections = document.querySelectorAll("section");
+      function revealOnScroll() {
+        const trigger = window.innerHeight * 0.85;
+        sections.forEach((section) => {
+          const top = section.getBoundingClientRect().top;
+          if (top < trigger) section.classList.add("visible");
+        });
+      }
+      window.addEventListener("scroll", revealOnScroll);
+      revealOnScroll();
+
+      const music = document.getElementById("bg-music");
+      const toggle = document.getElementById("music-toggle");
+      window.addEventListener("click", () => music.play(), { once: true });
+      toggle.addEventListener("click", () => {
+        if (music.paused) {
+          music.play();
+          toggle.textContent = "🔇";
+        } else {
+          music.pause();
+          toggle.textContent = "🎵";
+        }
+      });
+
+      // Floating roses & hearts across entire page
+      const icons = ["💖", "🌹", "💞", "🌸"];
+      function createFloat() {
+        const float = document.createElement("div");
+        float.classList.add("float");
+        float.textContent = icons[Math.floor(Math.random() * icons.length)];
+        float.style.left = Math.random() * 100 + "vw";
+        float.style.fontSize = 18 + Math.random() * 20 + "px";
+        float.style.animationDuration = 8 + Math.random() * 5 + "s";
+        document.body.appendChild(float);
+        setTimeout(() => float.remove(), 13000);
+      }
+      setInterval(createFloat, 700);
+    </script>
+  </body>
+</html>
